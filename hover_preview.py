@@ -23,14 +23,14 @@ class HoverPreview(sublime_plugin.EventListener):
             width, height = -1, -1
 
         # First check height since it's the smallest vector
-        if height / width >= max_ratio and height > max_height:
-            ratio = max_height / height
-            width = width * ratio
-            height = height * ratio
-        elif height / width <= max_ratio and width > max_width:
-            ratio = max_width / width
-            width = width * ratio
-            height = height * ratio
+        #if height / width >= max_ratio and height > max_height:
+         #   ratio = max_height / height
+         #   width = width * ratio
+         #   height = height * ratio
+        #elif height / width <= max_ratio and width > max_width:
+         #   ratio = max_width / width
+         #   width = width * ratio
+         #   height = height * ratio
 
         return (width, height)
 
@@ -150,11 +150,11 @@ class HoverPreview(sublime_plugin.EventListener):
 
                     view.show_popup('<img style="width:' + str(width) + 
                                                 'px;height:' + str(height) + 
-                                                'px;" src="data:image/png;base64,' + 
+                                                'px;overflow:hidden" src="data:image/png;base64,' + 
                                         encoded + 
                                     '">', 
                                      flags=sublime.HIDE_ON_MOUSE_MOVE_AWAY, 
-                                     location=point)
+                                     location=point,max_width=width+20,max_height=height+20)
                     return
                 return
             return
